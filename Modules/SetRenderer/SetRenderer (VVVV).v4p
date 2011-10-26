@@ -1,0 +1,11 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv33beta11.1.dtd" >
+   <PATCH nodename="D:\woei_local\SetRenderer (VVVV).v4p">
+   <BOUNDS type="Window" left="14025" top="9585" width="7095" height="4875">
+   </BOUNDS>
+   <NODE nodename="SetRenderer.v4p" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="855" top="2430" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="855" top="2430">
+   </BOUNDS>
+   </NODE>
+   </PATCH>
