@@ -24,4 +24,4 @@
 ***
 **notes:**
 
-- there have been fundamental changes to the whole repository - if you already forked, please clone the repo again
+- there have been fundamental changes to the whole repository - if you already forked, please either do a 'git rebase' or clone the repo again
