@@ -3,7 +3,7 @@
    <BOUNDS type="Window" left="10350" top="1860" width="9000" height="6000">
    </BOUNDS>
    <NODE systemname="Ceil (Value)" filename="ValueCeil\ValueCeil.csproj" nodename="Ceil (Value)" componentmode="Hidden" id="1">
-   <BOUNDS type="Node" left="5100" top="2025" width="100" height="100">
+   <BOUNDS type="Node" left="5100" top="2025" width="585" height="270">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -16,6 +16,8 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    <PIN pinname="Width" slicecount="1" values="5">
+   </PIN>
+   <PIN pinname="Random Seed" slicecount="1" visible="1" values="61">
    </PIN>
    </NODE>
    <LINK srcnodeid="2" srcpinname="Output" dstnodeid="1" dstpinname="Input">
@@ -37,7 +39,7 @@
    <NODE systemname="MathRound (Value)" filename="%VVVV%\addonpack\lib\nodes\plugins\MathRound.dll" nodename="MathRound (Value)" componentmode="Hidden" id="16">
    <BOUNDS type="Node" left="6870" top="1590" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Digits" slicecount="1" values="-13">
+   <PIN pinname="Digits" slicecount="1" values="13">
    </PIN>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -95,6 +97,8 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="Digits">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="2" srcpinname="Output" dstnodeid="16" dstpinname="Input">
    </LINK>
@@ -139,12 +143,16 @@
    </PIN>
    <PIN pinname="InputStream" visible="1">
    </PIN>
+   <PIN pinname="Input Stream" visible="1">
+   </PIN>
+   <PIN pinname="Digits" visible="1">
+   </PIN>
+   <PIN pinname="Digits Stream" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="26" srcpinname="Output" dstnodeid="20" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="26" dstpinname="method">
-   </LINK>
-   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Digits">
    </LINK>
    <LINK srcnodeid="2" srcpinname="Output" dstnodeid="25" dstpinname="Y Input Value">
    </LINK>
@@ -157,5 +165,55 @@
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="2" srcpinname="Output" dstnodeid="26" dstpinname="InputStream">
+   </LINK>
+   <NODE systemname="Template (Raw)" filename="%VVVV%\lib\nodes\plugins\TemplateRaw\RawTemplate.csproj" nodename="Template (Raw)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="7875" top="360" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="26" dstpinname="Input Stream">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Digits">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Digits Stream">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="30" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="2940" top="4185" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2940" top="4185" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="Output Stream" dstnodeid="30" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Random (Value)" nodename="Random (Value)" componentmode="Hidden" id="31">
+   <BOUNDS type="Node" left="6630" top="375" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Is Integer" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Scale" slicecount="1" values="595">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="Output" dstnodeid="2" dstpinname="Random Seed">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="32" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="6885" top="900" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6885" top="900" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="60000">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Spread Count">
    </LINK>
    </PATCH>
