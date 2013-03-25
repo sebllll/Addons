@@ -466,36 +466,4 @@
    <LINKPOINT x="4380" y="1425">
    </LINKPOINT>
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="44" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Node" left="6435" top="3825" width="0" height="0">
-   </BOUNDS>
-   <BOUNDS type="Box" left="6435" top="3825" width="795" height="240">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="4" srcpinname="Age" dstnodeid="44" dstpinname="Y Input Value">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="45" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Node" left="7155" top="3510" width="0" height="0">
-   </BOUNDS>
-   <BOUNDS type="Box" left="7155" top="3510" width="795" height="960">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Y Input Value">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="4" srcpinname="Age" dstnodeid="45" dstpinname="Y Input Value">
-   </LINK>
    </PATCH>

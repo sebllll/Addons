@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta27.2.dtd" >
-   <PATCH nodename="C:\vvvv\Addons\plugins\Pulse\Pulse.v4p" systemname="Pulse" filename="C:\vvvv\Addons\plugins\Pulse\Pulse.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta29.2.dtd" >
+   <PATCH nodename="C:\_dev\Addons\plugins\Pulse\Pulse.v4p" systemname="Pulse" filename="C:\vvvv\Addons\plugins\Pulse\Pulse.v4p">
    <BOUNDS type="Window" left="1230" top="780" width="8640" height="11175">
    </BOUNDS>
    <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="1">
@@ -22,7 +22,7 @@
    <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="8">
    </PIN>
    </NODE>
-   <NODE systemname="Mouse (System Window)" nodename="Mouse (System Window)" componentmode="Hidden" id="2">
+   <NODE systemname="Mouse (System Window Legacy)" nodename="Mouse (System Window)" componentmode="Hidden" id="2">
    <BOUNDS type="Node" left="4995" top="1110" width="2025" height="270">
    </BOUNDS>
    <PIN pinname="X" visible="1">
@@ -67,7 +67,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5895" top="2895" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.5">
+   <PIN pinname="Y Input Value" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -157,7 +157,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5235" top="4770" width="2220" height="270">
    </BOUNDS>
-   <PIN pinname="Color Input" slicecount="1" values="|1.00000,0.46989,0.46989,1.00000|">
+   <PIN pinname="Color Input" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    </NODE>
    <LINK srcnodeid="18" srcpinname="Color Output" dstnodeid="17" dstpinname="Input">
@@ -211,7 +211,7 @@
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="23">
    <BOUNDS type="Node" left="5940" top="5685" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input 2" slicecount="1" values="0.4">
+   <PIN pinname="Input 2" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -465,5 +465,37 @@
    </LINKPOINT>
    <LINKPOINT x="4380" y="1425">
    </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="44" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="6435" top="3825" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6435" top="3825" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Age" dstnodeid="44" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="45" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="7155" top="3510" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7155" top="3510" width="795" height="960">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Input Value">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Age" dstnodeid="45" dstpinname="Y Input Value">
    </LINK>
    </PATCH>
