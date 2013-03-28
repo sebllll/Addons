@@ -36,6 +36,7 @@ namespace VVVV.Nodes
 		[Input("Digits", DefaultValue = 0, MinValue=0, MaxValue=15)]
 		IDiffSpread<int> FDigits;
 		
+		
 		[Input("Digits Stream", DefaultValue = 0, MinValue=0, MaxValue=15)]
 		IInStream<int> FDigitsStream;
 		
@@ -62,19 +63,58 @@ namespace VVVV.Nodes
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
+			
+			SpreadMax = FStreamIn.CombineWith(FDigitsStream);
+			FStreamOut.Length = SpreadMax;
+			
+			double[] dBuffer = MemoryPool<double>.GetArray();
+			int[] iBuffer = MemoryPool<int>.GetArray();
+			
+			using (var iR = FStreamIn.GetCyclicReader())
+			using (var dR = FDigitsStream.GetCyclicReader())
+			using (var oW = FStreamOut.GetWriter())
+			{
+				var numSlicesToRead = SpreadMax;
+				while (numSlicesToRead > 0)
+				{
+					var blockSize = Math.Min(numSlicesToRead, dBuffer.Length);
+					iR.Read(dBuffer, 0, blockSize);
+					dR.Read(iBuffer, 0, blockSize);
+					for (int i=0; i<blockSize; i++)
+					{
+						dBuffer[i] = Math.Round(dBuffer[i], iBuffer[i]);
+					}
+					oW.Write(dBuffer, 0, blockSize);
+					numSlicesToRead -= blockSize;
+				}
+			}
+			MemoryPool<double>.PutArray(dBuffer);
+			MemoryPool<int>.PutArray(iBuffer);
+			
+			// -------------------------------------------------
+			
+			/*
+			
 			FOutput.SliceCount = SpreadMax;
 			//FStreamOut.SetLength(SpreadMax);
 			//FStreamOut.SetLengthBy(this, FStreamIn);
+			
+			spreadMax = FInput.CombineWith(FDigitsStream);
+			FOutput.Length = spreadMax;
+			
+			double[] dBuffer = MemoryPool<double>.GetArray();
+			int[] iBuffer = MemoryPool<int>.GetArray();
 			
 			var maxN = FStreamIn.CombineWith(FDigitsStream);
 			var bufferInput = new double[1024];
 			var bufferdigits = new int[1024];
 			var bufferOut = new double[1024];
 			
-			var reader1 = FStreamIn.GetCyclicReader();
-			var reader2 = FDigitsStream.GetCyclicReader();
-			try
-			{
+			using (var reader1 = FStreamIn.GetCyclicReader())
+			using (var reader2 = FDigitsStream.GetCyclicReader())
+			using (var writer  = FOutput.GetWriter()))
+//			try
+//			{
 				var numSlicesToRead = maxN;
 				while (numSlicesToRead > 0)
 				{
@@ -85,19 +125,27 @@ namespace VVVV.Nodes
 					{
 						FOutput[i] = Math.Round(bufferInput[i], bufferdigits[i]);
 						// put it into bufferOut, so that this one can be copied into the Pin atr the end?
+						
+						// FStreamOut.GetWriter().Write(bufferInput[i], blockSize);
 					}
+					writer.Write(dBuffer, 0, blockSize);
 					numSlicesToRead -= blockSize;
 				}
-			}
-			finally
-			{
-				reader1.Dispose();
-				reader2.Dispose();
-			}
-			
+			MemoryPool<double>.PutArray(dBuffer);
+			MemoryPool<int>.PutArray(iBuffer);
+//			}
+//			finally
+//			{
+//				reader1.Dispose();
+//				reader2.Dispose();
+//			}
+			*/
 			//FStreamOut.Flush(true);
 			//FStreamOut.Write( bufferOut,0, bufferOut.Length );
 			//FStreamOut.AssignFrom();
+			
+			//using( var writer = FStreamOut.GetWriter() );
+
 			
 			
 			// the simple variant with the use of spreads
