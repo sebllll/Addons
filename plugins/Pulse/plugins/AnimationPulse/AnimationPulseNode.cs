@@ -55,11 +55,9 @@ namespace VVVV.Nodes
 
 			//add new particles
 			if (FBang[0]) {
-				for (int i = 0; i < 4; i++) {
 					var vel = new Vector3D(0, 0, 0);
 					var acc = new Vector3D(0, 0, 0);
 					FParticles.Add(new Particle(FHDEHost.GetCurrentTime(), FMaxLifeTime[0], FInput[0], vel, acc));
-				}
 			}
 
 			//set outputs
