@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta27.dtd" >
-   <PATCH nodename="C:\vvvv\Addons\Modules\RectangularSpread (Spreads)\RectangularSpread (Spreads).v4p" systemname="RectangularSpread (Spreads)" filename="C:\vvvv\Addons\Modules\RectangularSpread (Spreads)\RectangularSpread (Spreads).v4p">
-   <BOUNDS height="10695" left="2340" top="660" type="Window" width="5520">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta29.2.dtd" >
+   <PATCH nodename="C:\_dev\Addons\Modules\RectangularSpread (Spreads)\RectangularSpread (Spreads).v4p" systemname="RectangularSpread (Spreads)" filename="C:\vvvv\Addons\Modules\RectangularSpread (Spreads)\RectangularSpread (Spreads).v4p">
+   <BOUNDS height="10695" left="10590" top="750" type="Window" width="8760">
    </BOUNDS>
    <NODE id="3" nodename="Cross (2d)" systemname="Cross (2d)">
    <BOUNDS height="270" left="960" top="4170" type="Node" width="3105">
@@ -249,9 +249,9 @@
    </PIN>
    </NODE>
    <NODE componentmode="InABox" id="60" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
-   <BOUNDS height="100" left="2670" top="1320" type="Node" width="100">
+   <BOUNDS height="100" left="4260" top="1320" type="Node" width="100">
    </BOUNDS>
-   <BOUNDS height="480" left="2670" top="1320" type="Box" width="795">
+   <BOUNDS height="480" left="4260" top="1320" type="Box" width="795">
    </BOUNDS>
    <PIN pinname="Rows" slicecount="1" values="2">
    </PIN>
@@ -273,7 +273,7 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <BOUNDS height="0" left="975" top="3105" type="Node" width="0">
+   <BOUNDS height="270" left="975" top="3105" type="Node" width="3360">
    </BOUNDS>
    <PIN pinname="Output X" visible="1">
    </PIN>
@@ -287,6 +287,8 @@
    </PIN>
    <PIN pinname="Input" visible="1">
    </PIN>
+   <PIN pinname="Alignment" slicecount="1" values="Block" visible="1">
+   </PIN>
    </NODE>
    <LINK dstnodeid="62" dstpinname="Input" srcnodeid="57" srcpinname="Y Output Value">
    </LINK>
@@ -294,12 +296,12 @@
    </LINK>
    <LINK dstnodeid="62" dstpinname="Spread Count" srcnodeid="60" srcpinname="Y Output Value">
    </LINK>
-   <NODE componentmode="Hidden" filename="%VVVV%\addonpack\lib\nodes\plugins\DeCons.dll" id="64" nodename="DeCons (Spreads)" systemname="DeCons (Spreads)">
-   <BOUNDS height="270" left="975" top="3690" type="Node" width="810">
+   <NODE componentmode="Hidden" filename="%VVVV%\addonpack\lib\nodes\plugins\DeCons.dll" id="64" nodename="DeCons (Spreads)" systemname="Unzip (Value Bin)">
+   <BOUNDS height="270" left="975" top="3690" type="Node" width="1200">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
-   <PIN pinname="Input Bin Size" visible="1">
+   <PIN pinname="Input Bin Size" visible="1" slicecount="1" values="-1">
    </PIN>
    <PIN pinname="Output 1" visible="1">
    </PIN>
@@ -309,7 +311,13 @@
    <LINK dstnodeid="64" dstpinname="Input" srcnodeid="62" srcpinname="Output">
    </LINK>
    <LINK dstnodeid="64" dstpinname="Input Bin Size" srcnodeid="60" srcpinname="Y Output Value">
-   <LINKPOINT x="2685" y="3195">
+   <LINKPOINT x="4650" y="2115">
+   </LINKPOINT>
+   <LINKPOINT x="4650" y="3360">
+   </LINKPOINT>
+   <LINKPOINT x="4455" y="3555">
+   </LINKPOINT>
+   <LINKPOINT x="2325" y="3555">
    </LINKPOINT>
    </LINK>
    <LINK dstnodeid="3" dstpinname="X In" srcnodeid="64" srcpinname="Output 1">
@@ -317,5 +325,99 @@
    <LINK dstnodeid="3" dstpinname="Y In" srcnodeid="64" srcpinname="Output 2">
    </LINK>
    <LINK dstnodeid="37" dstpinname="Select" srcnodeid="42" srcpinname="Output">
+   </LINK>
+   <NODE systemname="NULL (Enumerations)" nodename="NULL (Enumerations)" componentmode="Hidden" id="69" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="5535" top="7590" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" slicecount="1" values="(nil)">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="71" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Node" left="2655" top="1320" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2655" top="1320" width="1320" height="240">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" values="Centered">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Alignment">
+   </PIN>
+   <PIN pinname="Output Enum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="71" srcpinname="Output Enum" dstnodeid="69" dstpinname="Receive" hiddenwhenlocked="1">
+   <LINKPOINT x="6000" y="2955">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="CreateEnum (Enumerations)" nodename="CreateEnum (Enumerations)" componentmode="Hidden" id="72" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="6150" top="7590" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum Name" slicecount="1" values="RectangularSpread">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="73" systemname="IOBox (String)" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="6135" top="6840" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6135" top="6840" width="975" height="465">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="2" values="Centered,Block">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="73" srcpinname="Output String" dstnodeid="72" dstpinname="Strings" hiddenwhenlocked="1">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="74" systemname="IOBox (Enumerations)" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="5520" top="6525" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5520" top="6525" width="1590" height="240">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" values="RectangularSpread">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="74" srcpinname="Output Enum" dstnodeid="69" dstpinname="Enum" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Enum2Ord (Enumerations)" nodename="Enum2Ord (Enumerations)" componentmode="Hidden" id="75">
+   <BOUNDS type="Node" left="2640" top="2040" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   <PIN pinname="Ord Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="71" srcpinname="Output Enum" dstnodeid="75" dstpinname="Enum">
+   </LINK>
+   <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="76">
+   <BOUNDS type="Node" left="2640" top="2415" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="75" srcpinname="Ord Value" dstnodeid="76" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Ord2Enum (Enumerations)" nodename="Ord2Enum (Enumerations)" componentmode="Hidden" id="77">
+   <BOUNDS type="Node" left="2640" top="2730" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   <PIN pinname="Ord Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="77" srcpinname="Enum" dstnodeid="62" dstpinname="Alignment">
+   </LINK>
+   <LINK srcnodeid="76" srcpinname="Output" dstnodeid="77" dstpinname="Ord Value">
    </LINK>
    </PATCH>
